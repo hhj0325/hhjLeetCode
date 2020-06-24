@@ -1,6 +1,8 @@
 package com.hhj.leetcode;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
@@ -13,30 +15,31 @@ import java.util.Arrays;
 
 public class TwoSum {
     public static int[] twoSum(int[] nums, int target) {
-        int[] ret = new int[2];
-        if (nums.length > 1) {
-            for (int i = 0; i < nums.length - 1; i++) {
-                for (int j = i + 1; j < nums.length; j++) {
-                    if (target == nums[i] + nums[j]) {
-                        ret[0] = i;
-                        ret[1] = j;
-                        return ret;
+        Set<Integer> intSet = new HashSet<>();
+        int min = 0;
+        for (int i = 0; i < nums.length; i++) {
+            intSet.add(nums[i]);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            min = target - nums[i];
+            if (intSet.contains(min)) {
+                for (int j = 0; j < nums.length; j++) {
+                    if (nums[j] == min && i != j) {
+                        System.out.println(Arrays.toString(new int[]{i, j}));
+                        return new int[]{i, j};
                     }
                 }
-
             }
-
         }
-        return ret;
+        return null;
     }
 
     public static void main(String[] args) {
-        int[] in1 = {1, 2, 9, 8, 7};
-        System.out.println(Arrays.toString(TwoSum.twoSum(in1, 9)));
-        System.out.println(Arrays.toString(TwoSum.twoSum(in1, 10)));
-        System.out.println(Arrays.toString(TwoSum.twoSum(in1, 17)));
-        System.out.println(Arrays.toString(TwoSum.twoSum(in1, 16)));
-        System.out.println(Arrays.toString(TwoSum.twoSum(in1, 20)));
+        int[] nums2 = {2, 7, 11, 15};
+        int target2 = 9;
+        long a = System.currentTimeMillis();
+        TwoSum.twoSum(nums2, target2);
+        System.out.println("time:" + (System.currentTimeMillis() - a));
     }
 
 }
