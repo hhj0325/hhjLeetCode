@@ -13,16 +13,15 @@ public class RemoveDuplicateNodes {
         ListNode end = head.next;
         ListNode start = head;
         while (end != null){
-            if(!duSet.contains(end.val)){
-                duSet.add(end.val);
+            if(duSet.add(end.val)){
                 start.next = end;
                 start = end;
-                end = end.next;
             }
             else {
                 start.next = null;
-                end = end.next;
             }
+            end = end.next;
+
         }
         return head;
 
@@ -47,7 +46,5 @@ public class RemoveDuplicateNodes {
             System.out.println(ret.val);
             ret = ret.next;
         }
-
-
     }
 }
