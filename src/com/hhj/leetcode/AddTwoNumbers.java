@@ -57,12 +57,12 @@ public class AddTwoNumbers {
     public static void main(String[] args) {
 
         ListNode a1 = new ListNode(2);
-        a1.addNext(new ListNode(4)).addNext(new ListNode(3));
+        a1.setNext(new ListNode(4)).setNext(new ListNode(3));
         System.out.println(a1);
 
 
         ListNode b1 = new ListNode(5);
-        b1.addNext(new ListNode(6)).addNext(new ListNode(4));
+        b1.setNext(new ListNode(6)).setNext(new ListNode(4));
         System.out.println(b1);
 
 
