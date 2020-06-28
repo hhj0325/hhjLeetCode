@@ -33,8 +33,8 @@ public class MinSubArrayLen {
     }
 
     public static void main(String[] args) {
-        int s = 7;
+        int s = 10;
         int[] nums = new int[]{2, 3, 1, 2, 4, 3};
-        System.out.println(MinSubArrayLen.minSubArrayLen(s, nums));
+        System.out.println("end count:" + MinSubArrayLen.minSubArrayLen(s, nums));
     }
 }
