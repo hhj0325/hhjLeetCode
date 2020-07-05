@@ -1,36 +1,29 @@
 package com.hhj.leetcode;
 
+import java.util.Stack;
+
 /**
  * https://leetcode-cn.com/problems/longest-valid-parentheses/
  */
 public class LongestValidParentheses {
 
     public int longestValidParentheses(String s) {
-        if(s == null || s.length() == 0){
-            return 0;
-        }
-        int count = 0;
-        int maxCount = 0;
-        char cur = s.charAt(0);
-        char tail;
-
-        for (int i = 1 ; i < s.length(); i++){
-            tail = s.charAt(i);
-            if(addCheck(cur, tail)){
-                count +=2;
-                if(count > maxCount){
-                    maxCount = count;
+        int maxans = 0;
+        Stack<Integer> stack = new Stack<>();
+        stack.push(-1);
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                stack.push(i);
+            } else {
+                stack.pop();
+                if (stack.empty()) {
+                    stack.push(i);
+                } else {
+                    maxans = Math.max(maxans, i - stack.peek());
                 }
             }
-            else if (passCheck(cur, tail)){
-            }
-            else {
-                count = 0;
-            }
-            cur = tail;
-
         }
-        return maxCount;
+        return maxans;
 
     }
 
@@ -46,7 +39,7 @@ public class LongestValidParentheses {
     public static void main(String[] args) {
         String s1 = "(()";
         String s2 = ")()())";
-        String s3 = "())";
+        String s3 = "())((())";
 
         LongestValidParentheses obj = new LongestValidParentheses();
         System.out.println(obj.longestValidParentheses(s1));
