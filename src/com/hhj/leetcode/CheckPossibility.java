@@ -23,7 +23,7 @@ public class CheckPossibility {
                 if (count > 1) {
                     return false;
                 }
-                if (i > 1 && nums[i + 1] < nums[i - 1]) {
+                if (i >= 1 && nums[i + 1] < nums[i - 1]) {
                     nums[i + 1] = nums[i];
                 }
             }
@@ -36,5 +36,6 @@ public class CheckPossibility {
         System.out.println(checkPossibility(new int[]{4, 2, 1}));
         System.out.println(checkPossibility(new int[]{3, 4, 2, 3}));
         System.out.println(checkPossibility(new int[]{5, 7, 1, 8}));
+
     }
 }
